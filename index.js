@@ -1,12 +1,16 @@
+require('dotenv').config();
 const http = require('http');
 const { driver } = require('@rocket.chat/sdk');
-const {config} = require ("./rocket-chat-token");
 
 // customize the following with your server and BOT account information
 const HOST = 'http://10.152.183.239:3000';
 const BOTNAME = 'Gitlab.Integration';  // name  bot response to
 const SSL = false;  // server uses https ?
 const ROOMS = ['general', 'Gitlab_Interation'];
+
+
+const config_USER = process.env.USERBOT;
+const config_PASS = process.env.PASS;
 
 http.createServer((request, response) => {
   const { headers, method, url } = request;
@@ -79,15 +83,20 @@ var script = new Script();
     // and other production situations 
     const runbot = async () => {
         const conn = await driver.connect( { host: HOST, useSsl: SSL});
-        myuserid = await driver.login({username: config.USER, password: config.PASS});
+        myuserid = await driver.login({username: config_USER, password: config_PASS});
 
         const dm = await driver.sendDirectToUser(dmtext,'JDoe');
+
+        response.statusCode = 200;
+        response.setHeader('Content-Type', 'application/json');
+        const responseBody = { dmtext, dm};
+        response.write(JSON.stringify(responseBody));
+        response.end();
+
+    return result;
     }
 
     runbot();
-    return result;
-    
-    
 
 
   });

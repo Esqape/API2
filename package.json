@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-debug": "node --inspect=0.0.0.0 index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@rocket.chat/sdk": "^0.2.9-2",
-    "body": "^5.1.0",
-    "send-data": "^8.0.0"
+    "dotenv": "^16.0.3"
   }
 }
