@@ -1,0 +1,13 @@
+node_modules
+
+npm-debug.log
+
+rocket-chat-token.js
+
+Script.js
+
+easybot.js
+
+backup.js
+
+.env
