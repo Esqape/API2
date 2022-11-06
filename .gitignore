@@ -6,7 +6,7 @@ easybot.js
 
 backup.js
 
-node_modules
+node_modules/
 
 .env
 .env.test
